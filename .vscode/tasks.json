@@ -2,22 +2,13 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Rust: cargo build - twosum0001",
-            "type": "cargo",
-            "subcommand": "build",
-            "problemMatcher": [
-                "$rustc"
-            ],
-            "group": "build"
-           
-        },
-        {
-            "type": "cargo",
-            "subcommand": "run",
-            "problemMatcher": [
-                "$rustc"
-            ],
-            "label": "Rust: cargo run - twosum0001"
+            "label": "build",
+            "type": "shell", 
+            "command":"cargo",
+            "args": ["build"] ,
+            "options": {
+                "cwd": "${workspaceFolder}/twosum0001",
+            }
         }
     ]
 }
