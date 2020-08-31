@@ -1,14 +1,13 @@
-//变量绑定 let a1 = 5;  类似c++ 常量  不可变   虽然变量不可变但是变量可以重新let使用 
+//变量绑定 let a1 = 5;  类似c++ 常量  不可变   虽然变量不可变但是变量可以重新let使用 重影
 //可变绑定 let mut=10 ;
 
 
-//内置类型
+//内置数据类型
 bool
-char 字符类型 u8可以转为char
+char 字符类型 u8可以转为char  4个字节 可支持中文  所以在 Rust 中字符串和字符都必须使用 UTF-8 编码，否则编译器会报错。
 number  i8  i16 i32 i64 i128 isize 默认i32
         i8  u16 u32 u64 u128 usize
         f32 f64  默认f32
-
 str  字符串类型：最底层的是不定长类型str，更常用的是字符串切片&str和堆分配字符串String， 其中字符串切片是静态分配的，有固定的大小，并且不可变，而堆分配字符串是可变的。
 数组：具有固定大小，并且元素都是同种类型，可表示为[T; N]。
 切片：引用一个数组的部分数据并且不需要拷贝，可表示为&[T]。
@@ -17,6 +16,39 @@ str  字符串类型：最底层的是不定长类型str，更常用的是字符
 函数：具有函数类型的变量实质上是一个函数指针。
 元类型：即()，其唯一的值也是()。
 不同类型不支持运算  使用as 转型
+元组 使用()包括的一组数据 可包含不同类型
+数组 使用[]包括的同类型数据
 
+注释 // /*   */   ///文档注释
+函数 fn fname( param) ->rettype {}
+
+条件 if a>0{} else if a<5 {} else{} 条件必须为bool类型
+
+循环 while a<10{  a+=1;}
+let a=[1,4,55,56] 
+for i in a.iter(){println!("{}",i)}  ///打印1,4,55,56
+for (index, value) in a.iter().enumerate(){ //index是下标，value是值
+        println!("index = {}, value = {}", index, value);
+ }
+for i in 0..5{println!("{}",i); } /// 打印0,1,2,3,4
+
+    iter() 创造一个不可修改值的循环器;
+    iter_mut()方法；创造一个可修改值的循环器；
+    元组模式，arr.iter().enumerate()；创造一个不可修改值的循环器，
+    take(num)限制前num条数据  arr.iter().take(5).enumerate()
+
+let t=0;
+let a=loop {
+    if t>10{break t;}
+    t+=1;
+}
+    
+切片 data[a..b]
 打印 println!("{} {:?} {:#?}",a)  
 返回值   函数最后一行 没有;
+
+const不变的值  不能被重影
+static   不变的值 有固定存储位置
+在main外编写
+const NUMBNER_OF_MONTHS:u32=12;
+

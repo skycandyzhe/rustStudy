@@ -2,13 +2,14 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Rust: cargo build - twosum0001",
             "type": "cargo",
             "subcommand": "build",
             "problemMatcher": [
                 "$rustc"
             ],
-            "group": "build",
-            "label": "Rust: cargo build - twosum0001"
+            "group": "build"
+           
         },
         {
             "type": "cargo",
