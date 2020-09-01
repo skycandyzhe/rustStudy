@@ -1,1 +1,1 @@
-pub mod twosumModel;
+pub mod twosum_model;
