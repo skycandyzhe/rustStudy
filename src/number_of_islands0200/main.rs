@@ -1,24 +1,19 @@
 mod number_of_islands;
 pub use number_of_islands::Solutions;
-//变量绑定 let a1 = 5;  类似c++ 常量
-//可变绑定 let mut=10 ;
 
-//内置类型
-// use std::collections::HashMap;
-// // impl Solution {
-// pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
-//     let mut map: HashMap<i32, i32> = HashMap::new();
-//     for (i, v) in nums.iter().enumerate() {
-//         match map.get(v) {
-//             Some(&index) => return vec![index, i as i32],
-//             _ => {
-//                 map.insert(target - v, i as i32);
-//             }
-//         }
-//     }
-//     vec![]
-// }
-// // }
+fn num_islands(grid: Vec<Vec<char>>) -> i32 {
+    let mut map: HashMap<i32, i32> = HashMap::new();
+    for (i, v) in nums.iter().enumerate() {
+        match map.get(v) {
+            Some(&index) => return vec![index, i as i32],
+            _ => {
+                map.insert(target - v, i as i32);
+            }
+        }
+    }
+    vec![]
+}
+
 fn main() {
     // let mut contacts = HashMap<i32,i32>::new();
     let v = vec![2, 7, 11, 15];

@@ -10,8 +10,8 @@ path = "src/twosum0001/main.rs"
 doc = false
 
 [[bin]]
-name = "numberOfIslands0200"
-path = "src/twosum0001/main.rs"
+name = "number_of_islands0200"
+path = "src/number_of_islands0200/main.rs"
 doc = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
