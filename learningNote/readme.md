@@ -52,3 +52,13 @@ static   不变的值 有固定存储位置
 在main外编写
 const NUMBNER_OF_MONTHS:u32=12;
 
+数组
+let mut array:[i32;3]=[0;3];
+
+二维数组
+    let mut mapdata:[[bool;5];4]=[[false;5];4];
+    println!("{:?}",mapdata);
+    动态数组
+
+动态数组
+    let v:Vev<i32>=Vec![]
