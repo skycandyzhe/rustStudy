@@ -6,14 +6,13 @@ fn num_islands(grid: &Vec<Vec<char>>) -> i32 {
     let maprow=grid.len();
     let mapcolumn=grid[0].len();
     let mut vecdata:Vec<Vec<bool>>=Vec::new();
-    vecdata.reserve(maprow);
-    // vecdata.resize(maprow,vecrow);
-    for _i in 0..maprow {
-        let mut vecrow:Vec<bool>=Vec::new();
-        vecrow.resize(mapcolumn,false);
-        // vecrow.resize_default(mapcolumn);
-        vecdata.push(vecrow);
-    }
+    // vecdata.reserve(maprow);
+
+    let mut vecrow:Vec<bool>=Vec::new();
+    vecrow.resize(mapcolumn,false);
+
+    vecdata.resize(maprow,vecrow);
+    //快速二维数组初始化
     println!("{:?}",vecdata);
     println!("{:?} {:?}",maprow,mapcolumn);
     0
