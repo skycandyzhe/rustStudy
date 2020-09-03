@@ -10,11 +10,8 @@ fn num_islands(grid: &Vec<Vec<char>>) -> i32 {
     // vecdata.resize(maprow,vecrow);
     for _i in 0..maprow {
         let mut vecrow:Vec<bool>=Vec::new();
-        // vecrow.resize(mapcolumn,false);
-        vecrow.resize_default(mapcolumn);
-        // for _j in 0..mapcolumn{
-            // vecrow.push(false)
-        // }
+        vecrow.resize(mapcolumn,false);
+        // vecrow.resize_default(mapcolumn);
         vecdata.push(vecrow);
     }
     println!("{:?}",vecdata);
