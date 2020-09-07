@@ -77,3 +77,15 @@ let mut array:[i32;3]=[0;3];
     impl Print for Solutions{
 
     }
+
+
+RC refrence计数器  单线程 多线程用arc
+    Rc::new("Calgary began as a fort called Fort Calgary that...".to_string())
+    解开 直接使用
+解引用
+
+RefCell  RefCell::new(data), 是另一种无需声明即可更改值的方法mut。就像一个，Cell但是使用引用而不是副本。
+    borrow_mut()
+    borrow()
+
+RC

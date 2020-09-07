@@ -24,6 +24,11 @@ name = "kafka_produce_example"
 path = "src/kafka/produce/example-produce.rs"
 doc = false
 
+[[bin]]
+name = "binaryTreeLevelOrder"
+path = "src/binary_tree_level_order_traversal0107/main.rs"
+doc = false
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
