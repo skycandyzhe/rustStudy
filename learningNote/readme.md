@@ -62,3 +62,18 @@ let mut array:[i32;3]=[0;3];
 
 动态数组
     let v:Vev<i32>=Vec![]
+
+面向对象
+定义数据结构
+    sturct Solutions{}
+    #定义函数 
+    impl Solutions{
+        函数中有&self 表成员函数 
+        没有表示域函数 用 Solutions::func()调用
+    }
+    #定义特性
+    trait Print()
+    #实现特性
+    impl Print for Solutions{
+
+    }

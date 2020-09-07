@@ -12,16 +12,14 @@ fn test1() {
     v.push(v1);
     let v1 = vec!['0', '0', '0', '1', '1'];
     v.push(v1);
-    let sol = Solutions {};
-    let ret = sol.num_islands(v);
-    println!("{}", ret);
+    let sol = Solutions::num_islands(v);
+    println!("{}", sol);
     // 输出: 1
 }
 fn test2() {
     let v: Vec<Vec<char>> = Vec::new();
-    let sol = Solutions {};
-    let ret = sol.num_islands(v);
-    println!("{}", ret);
+    let sol = Solutions::num_islands(v);
+    println!("{}", sol);
     // 输出: 1
 }
 fn main() {

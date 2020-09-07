@@ -2,8 +2,8 @@
 //      fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> ;
 // }
 #[derive(Debug)]
-pub struct Solutions {}
-Definition for a binary tree node.
+
+// Definition for a binary tree node.
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
@@ -29,7 +29,8 @@ impl Solution {
         
     }
 }
-impl Solutions {
+pub struct Solution {}
+impl Solution {
     pub fn num_islands(grid: Vec<Vec<char>>) -> i32 {
         let maprow = grid.len();
         if maprow == 0 {

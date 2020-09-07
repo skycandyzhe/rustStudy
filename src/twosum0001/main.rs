@@ -10,10 +10,8 @@ fn main() {
     // let mut a = 1;
     // a = 2;
     // println!("{}", a);
-    let sol = Solutions {};
+    let sol = Solutions::two_sum(v, tartget);
     println!("{:?}", sol);
-    let ret = sol.two_sum(v, tartget);
-    println!("{:?}", &ret);
     // let sol = Solution::new();
     // let ret = sol.two_sum(&v, 100);
 

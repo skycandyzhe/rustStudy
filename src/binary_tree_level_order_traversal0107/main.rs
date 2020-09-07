@@ -1,5 +1,5 @@
-mod number_of_islands;
-pub use number_of_islands::Solutions;
+mod 0107;
+pub use 0107::Solutions;
 
 fn test1() {
     let mut v = Vec::new();
