@@ -1,38 +1,27 @@
-mod binaryTreeLevelOrder;
-pub use binaryTreeLevelOrder::Solution;
-pub use binaryTreeLevelOrder::TreeNode;
-use std::rc::Rc;
-use std::cell::RefCell;
+mod top_k_frequent;
+pub use top_k_frequent::Solution;
+// use std::rc::Rc;
+// use std::cell::RefCell;
 
 fn test1() {
-    // let rootnote=TreeNode::new(3);
-    // rootnote.left=Some(Rc::new(RefCell::new(TreeNode::new(9))));
-    
-    
-    let l1=Option::Some(Rc::new(RefCell::new(TreeNode::new(9,None,None))));
-    let l2=Option::Some(Rc::new(RefCell::new(TreeNode::new(15,None,None))));
-    let r2=Option::Some(Rc::new(RefCell::new(TreeNode::new(7,None,None))));
-    let r1=Option::Some(Rc::new(RefCell::new(TreeNode::new(20,l2,r2))));
-    let root=Option::Some(Rc::new(RefCell::new(TreeNode::new(3,l1,r1))));
-    println!("{:?}",root);
-    // println!("{:?}",root.unwrap().borrow().left);
-    let ret=Solution::level_order_bottom(root);
-    println!(" {:#?} {:?} ",ret,ret);
-    // 输出: 1
+    let nums=vec![1,1,1,2,2,2,3];
+    let k=2;
+    let ret=Solution::top_k_frequent(nums,k);
+    println!("{:?}",ret);
+
 }
 fn test2() {
-    let root=Option::Some(Rc::new(RefCell::new(TreeNode::new(3,None,None))));
-    println!("{:?}",root);
-    let ret=Solution::level_order_bottom(root);
-    println!(" {:#?} {:?} ",ret,ret);
-    // 输出: 1
+    let nums=vec![];
+    let k=1;
+    let ret=Solution::top_k_frequent(nums,k);
+    println!("{:?}",ret);
+
 }
 fn test3() {
-    // let root=Option::Some(Rc::new(RefCell::new(TreeNode::new(3,None,None))));
-    // println!("{:?}",root);
-    let ret=Solution::level_order_bottom(None);
-    println!(" {:#?} {:?} ",ret,ret);
-    // 输出: 1
+    let nums=vec![0,1,1,12,2,5,1,1,1,3,5];
+    let k=10;
+    let ret=Solution::top_k_frequent(nums,k);
+    println!("{:?}",ret);
 }
 fn main() {
     test1();
