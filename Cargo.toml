@@ -31,6 +31,12 @@ doc = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+# rdkafka = { version = "0.24", features = ["dynamic-linking"] }
+
 [dependencies]
 kafka="0.8"
 env_logger = "0.4"
+
+
+[dependencies]
+rdkafka = { version = "0.24", features = ["cmake-build"] }
