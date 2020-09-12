@@ -1,5 +1,5 @@
-mod combination_sum;
-pub use combination_sum::Solution;
+mod add_twonum;
+pub use add_twonum::Solution;
 // use std::rc::Rc;
 // use std::cell::RefCell;
 
@@ -23,30 +23,30 @@ fn test1() {
     let ret=Solution::combination_sum(candidates,k);
     println!("{:?}",ret);
 }
-fn test2() {
-    let candidates =vec![2,5,2,1,2,1,1,1,4,2,3];
-    let k=15;
-    let ret=Solution::combination_sum(candidates,k);
-    println!("{:?} {:?}",ret,ret.len());
-}
-fn test3() {
-    let candidates =vec![2,3,6,7,11];
-    let k=11;
-    let ret=Solution::combination_sum(candidates,k);
-    println!("{:?}",ret);
-}
-fn test4() {
-    let candidates =vec![1,2,3,6,7];
-    let k=7;
-    let ret=Solution::combination_sum(candidates,k);
-    println!("{:?}",ret);
-}
+// fn test2() {
+//     let candidates =vec![2,5,2,1,2,1,1,1,4,2,3];
+//     let k=15;
+//     let ret=Solution::combination_sum(candidates,k);
+//     println!("{:?} {:?}",ret,ret.len());
+// }
+// fn test3() {
+//     let candidates =vec![2,3,6,7,11];
+//     let k=11;
+//     let ret=Solution::combination_sum(candidates,k);
+//     println!("{:?}",ret);
+// }
+// fn test4() {
+//     let candidates =vec![1,2,3,6,7];
+//     let k=7;
+//     let ret=Solution::combination_sum(candidates,k);
+//     println!("{:?}",ret);
+// }
 
 fn main() {
     test1();
-    test2();
-    test3();
-    test4();
+    // test2();
+    // test3();
+    // test4();
     // test5();
     // println!("Hello, world!");
 }
