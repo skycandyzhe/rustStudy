@@ -18,10 +18,10 @@ pub use add_twonum::Solution;
 // 所有数字（包括 target）都是正整数。
 // 解集不能包含重复的组合。 
 fn test1() {
-    let candidates =vec![10,1,2,7,6,1,5];
-    let k=8;
-    let ret=Solution::combination_sum(candidates,k);
-    println!("{:?}",ret);
+    // let candidates =vec![10,1,2,7,6,1,5];
+    // let k=8;
+    // let ret=Solution::add_two_numbers(candidates,k);
+    // println!("{:?}",ret);
 }
 // fn test2() {
 //     let candidates =vec![2,5,2,1,2,1,1,1,4,2,3];
