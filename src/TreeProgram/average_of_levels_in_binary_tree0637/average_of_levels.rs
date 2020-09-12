@@ -35,8 +35,9 @@ impl TreeNode {
 pub struct Solution {}
 impl Solution {
 
-    pub fn Breadthforeach(lastlevel:Vec<Rc<RefCell<TreeNode>>>,rettemp:& mut Vec<Vec<i32>>){
-        let mut vecdata:Vec<i32>=Vec::new();
+    pub fn Breadthforeach(lastlevel:Vec<Rc<RefCell<TreeNode>>>,rettemp:& mut Vec<f64>){
+        let mut vecdata:f64=0.0;
+        let mut levelcount=0;
         if lastlevel.len()==0{
             return
         }
@@ -51,17 +52,19 @@ impl Solution {
             if _node.right.is_none()==false{
                 levelnode.push(_node.right.as_ref().unwrap().clone());
             }     
-            vecdata.push(_node.val);
+            vecdata+=_node.val as f64;
+            levelcount+=1;
             // 获取到每个节点的左右节点 是none抛弃 不是 加入节点表和下一层表
 
         }
+        vecdata=vecdata/(levelcount as f64);
         rettemp.push(vecdata);
         Solution::Breadthforeach(levelnode,rettemp);
 
 
     }
-    pub fn level_order_bottom(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
-        let mut  ret:Vec<Vec<i32>> =Vec::new();
+    pub fn average_of_levels(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<f64> {
+        let mut  ret:Vec<f64> =Vec::new();
         if root.is_none(){
             return ret;
         }
@@ -69,7 +72,6 @@ impl Solution {
         
         let vlevel=vec![root.unwrap().clone()];
         Solution::Breadthforeach(vlevel,&mut ret);
-        ret.reverse();
         ret
 
     }
