@@ -1,46 +1,35 @@
 mod add_twonum;
 pub use add_twonum::Solution;
-// use std::rc::Rc;
-// use std::cell::RefCell;
+pub use add_twonum::ListNode;
 
-// 1 <= candidates.length <= 30
-// 1 <= candidates[i] <= 200
-// candidate 中的每个元素都是独一无二的。
-// 1 <= target <= 500
-// 最大只有500 用贪心算法 
+// 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
 
-// 给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
+// 如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
 
-// candidates 中的数字可以无限制重复被选取。
+// 您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 
-// 说明：
+// 示例：
 
-// 所有数字（包括 target）都是正整数。
-// 解集不能包含重复的组合。 
+// 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
+// 输出：7 -> 0 -> 8
+// 原因：342 + 465 = 807
+
+//方案 入栈 然后栈顶元素计算
 fn test1() {
+    let f1=ListNode::new(3,None);
+    let f2=ListNode::new(4,Option::Some(Box::new(f1)));
+    let first=ListNode::new(2,Option::Some(Box::new(f2)));
+    
+
+    let s1=ListNode::new(3,None);
+    let s2=ListNode::new(4,Option::Some(Box::new(s1)));
+    let second=ListNode::new(2,Option::Some(Box::new(s2)));
     // let candidates =vec![10,1,2,7,6,1,5];
     // let k=8;
     // let ret=Solution::add_two_numbers(candidates,k);
-    // println!("{:?}",ret);
+    println!("{:?}  {:?}",first,second);
 }
-// fn test2() {
-//     let candidates =vec![2,5,2,1,2,1,1,1,4,2,3];
-//     let k=15;
-//     let ret=Solution::combination_sum(candidates,k);
-//     println!("{:?} {:?}",ret,ret.len());
-// }
-// fn test3() {
-//     let candidates =vec![2,3,6,7,11];
-//     let k=11;
-//     let ret=Solution::combination_sum(candidates,k);
-//     println!("{:?}",ret);
-// }
-// fn test4() {
-//     let candidates =vec![1,2,3,6,7];
-//     let k=7;
-//     let ret=Solution::combination_sum(candidates,k);
-//     println!("{:?}",ret);
-// }
+
 
 fn main() {
     test1();
