@@ -12,13 +12,13 @@ pub struct ListNode {
 
 impl ListNode {
 //   #[inline]
-//   fn new(val: i32) -> Self {
-//     ListNode {
-//       next: None,
-//       val
-//     }
-//   }
-  pub fn new(val: i32,next:Option<Box<ListNode>>) -> Self {
+    pub fn new(val: i32) -> Self {
+    ListNode {
+      next: None,
+      val
+    }
+  }
+  pub fn new1(val: i32,next:Option<Box<ListNode>>) -> Self {
     ListNode {
       next: next,
       val
@@ -35,59 +35,42 @@ impl ListNode {
 pub struct Solution {}
 impl Solution {
     pub fn add_two_numbers(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        let  ret:Option<Box<ListNode>>=Option::None;
-        let deque1:VecDeque<i32>=VecDeque::new();
-        let mut index1:& Option<Box<ListNode>> =l1;
-        while !index1.is_none(){
-            println!(":?",index1);
-            // deque1.push_back(index1.as_ref().unwrap())
+        let mut  deque1:VecDeque<i32>=VecDeque::new();
+        let mut index1:& Option<Box<ListNode>> =&l1;
+        //入栈 考虑如果有其他变种题目 换一下栈就可以实现
+        while index1.is_some(){
+            deque1.push_back(index1.as_ref().unwrap().val);
+            index1=&(index1.as_ref().unwrap().next);
         }
-
-        ret
+        let mut deque2:VecDeque<i32>=VecDeque::new();
+        let mut index2:& Option<Box<ListNode>> =&l2;
+        while index2.is_some(){
+            deque2.push_back(index2.as_ref().unwrap().val);
+            index2=&(index2.as_ref().unwrap().next);
+        }
+        let mut head = ListNode::new(0);
+        let mut cur = &mut head.next;
+        let mut jinwei=0;
+        while !deque1.is_empty() ||!deque2.is_empty() ||jinwei!=0 {
+            let mut temp:i32=jinwei;
+            if !deque1.is_empty() {
+                temp+=deque1.pop_front().unwrap();
+            }
+            if !deque2.is_empty() {
+                temp+=deque2.pop_front().unwrap();
+            }
+            jinwei=temp/10;
+            // print!("{}",jinwei);
+            // 插入结果  引用指向下一个节点
+            *cur = Some(Box::new(ListNode::new(temp%10)));
+            cur=&mut cur.as_mut().unwrap().next;
+        } 
+        head.next
     }
 }
 
 impl Solution {
 
-
-
-//     pub fn add_two_numbers_1(
-//         l1: Option<Box<ListNode>>,
-//         l2: Option<Box<ListNode>>,
-//     ) -> Option<Box<ListNode>> {
-//         let mut dump_head = ListNode::new(0);
-//         let mut current = &mut dump_head;
-//         let mut carry = 0;
-//         let mut p = l1.as_ref();
-//         let mut q = l2.as_ref();
-//         while p.is_some() || q.is_some() {
-//             let sum = match (&p, &q) {
-//                 (Some(l1), Some(l2)) => l1.val + l2.val + carry,
-//                 (Some(l1), None) => l1.val + carry,
-//                 (None, Some(l2)) => l2.val + carry,
-//                 (None, None) => 0 + carry,
-//             };
-//             carry = sum / 10;
-//             current.next = Some(Box::new(ListNode::new(sum % 10)));
-//             current = current.next.as_mut().unwrap();
-            
-//             if p.is_some() && p.unwrap().next.is_some() {
-//                 p = p.unwrap().next.as_ref()
-//             }else{
-//                 p = None;
-//             }
-//             if q.is_some() && q.unwrap().next.is_some() {
-//                 println!("cccc");
-//                 q = q.unwrap().next.as_ref();
-//             }else{
-//                 q = None;
-//             }
-//         }
-//         if (carry > 0) {
-//             current.next = Some(Box::new(ListNode::new(carry)));
-//         }
-//         dump_head.next
-//     }
 
 // // 闭包解决
 //     pub fn add_two_numbers(

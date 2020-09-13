@@ -16,24 +16,46 @@ pub use add_twonum::ListNode;
 
 //方案 入栈 然后栈顶元素计算
 fn test1() {
-    let f1=ListNode::new(3,None);
-    let f2=ListNode::new(4,Option::Some(Box::new(f1)));
-    let first=ListNode::new(2,Option::Some(Box::new(f2)));
+    let f1=ListNode::new1(8,None);
+    let f2=ListNode::new1(4,Option::Some(Box::new(f1)));
+    let first: Option<Box<ListNode>>=Option::Some(Box::new(ListNode::new1(2,Option::Some(Box::new(f2)))));
     
 
-    let s1=ListNode::new(3,None);
-    let s2=ListNode::new(4,Option::Some(Box::new(s1)));
-    let second=ListNode::new(2,Option::Some(Box::new(s2)));
+    let s1=ListNode::new1(3,None);
+    let s2=ListNode::new1(4,Option::Some(Box::new(s1)));
+    let second: Option<Box<ListNode>>=Option::Some(Box::new(ListNode::new1(2,Option::Some(Box::new(s2)))));
     // let candidates =vec![10,1,2,7,6,1,5];
     // let k=8;
-    // let ret=Solution::add_two_numbers(candidates,k);
-    println!("{:?}  {:?}",first,second);
-}
+    let ret=Solution::add_two_numbers(first,second);
 
+    println!("{:?}  ",ret);
+}
+fn test2() {
+    // 1586+85
+    let mut  f1=ListNode::new(5);
+    let mut f2=ListNode::new(6);
+    let  f3=ListNode::new(4);
+    f2.next= Some(Box::new(f3));
+    f1.next= Some(Box::new(f2));
+    
+    // let first: Option<Box<ListNode>>=Option::Some(Box::new(ListNode::new1(2,Option::Some(Box::new(f2)))));
+    
+    // 5558+558=6116
+    let mut s1=ListNode::new(2);
+    let mut s2=ListNode::new(4);
+    let s3=ListNode::new(3);
+    s2.next= Some(Box::new(s3));
+    s1.next= Some(Box::new(s2));
+    // let candidates =vec![10,1,2,7,6,1,5];
+    // let k=8;
+    let ret=Solution::add_two_numbers(Some(Box::new(f1)),Some(Box::new(s1)));
+
+    println!("{:?}  ",ret);
+}
 
 fn main() {
     test1();
-    // test2();
+    test2();
     // test3();
     // test4();
     // test5();
