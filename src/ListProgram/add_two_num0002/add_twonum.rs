@@ -39,6 +39,7 @@ impl Solution {
         let deque1:VecDeque<i32>=VecDeque::new();
         let mut index1:& Option<Box<ListNode>> =l1;
         while !index1.is_none(){
+            println!(":?",index1);
             // deque1.push_back(index1.as_ref().unwrap())
         }
 
