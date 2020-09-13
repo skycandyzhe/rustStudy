@@ -5,12 +5,12 @@
 // use std::collections::HashMap;
 // 调试宏  之后在 println 和 print 宏中就可以用 {:?} 占位符输出一整个结构体
 #[derive(Debug)]
-pub struct Solutions {
+pub struct Solution {
     // pub temp: i32,
 }
 
 use std::collections::HashMap;
-impl Solutions {
+impl Solution {
     // pub fn new() -> Self {
     //     // That means the user needs to use new to create a Billy. The user can only input times_to_print
     //     Self { temp: 3 }

@@ -1,5 +1,5 @@
 mod twosum_model;
-pub use twosum_model::Solutions;
+pub use twosum_model::Solution;
 //变量绑定 let a1 = 5;  类似c++ 常量
 //可变绑定 let mut=10 ;
 
@@ -10,7 +10,7 @@ fn main() {
     // let mut a = 1;
     // a = 2;
     // println!("{}", a);
-    let sol = Solutions::two_sum(v, tartget);
+    let sol = Solution::two_sum(v, tartget);
     println!("{:?}", sol);
     // let sol = Solution::new();
     // let ret = sol.two_sum(&v, 100);

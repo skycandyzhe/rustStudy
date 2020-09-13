@@ -10,7 +10,7 @@ pub struct Solutions {
 }
 
 use std::collections::HashMap;
-impl Solutions {
+impl Solution {
     // pub fn new() -> Self {
     //     // That means the user needs to use new to create a Billy. The user can only input times_to_print
     //     Self { temp: 3 }

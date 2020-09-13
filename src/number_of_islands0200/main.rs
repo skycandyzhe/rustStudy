@@ -1,6 +1,7 @@
 mod number_of_islands;
 pub use number_of_islands::Solutions;
 
+//循环一遍就可以了
 fn test1() {
     let mut v = Vec::new();
 

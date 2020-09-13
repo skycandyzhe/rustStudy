@@ -1,5 +1,5 @@
-mod twosum_model;
-pub use twosum_model::Solutions;
+mod wordsearch;
+pub use wordsearch::Solution;
 //变量绑定 let a1 = 5;  类似c++ 常量
 //可变绑定 let mut=10 ;
 
