@@ -78,7 +78,7 @@ let mut array:[i32;3]=[0;3];
 
     }
 
-
+类比c++智能指针
 RC refrence计数器  单线程 多线程用arc
     Rc::new("Calgary began as a fort called Fort Calgary that...".to_string())
     解开 直接使用
