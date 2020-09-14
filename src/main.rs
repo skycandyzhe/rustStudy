@@ -25,6 +25,9 @@ fn main() {
     // println!("{:?}",strtemp);
     // let strstr=strtemp.as_mut_str();
 
+    if true{
+        strtemp=String::from("SDASDASDsa");
+    }
     
     let strvec=unsafe{strtemp.as_mut_vec()};
     println!("{:?} {:?}",strvec,strvec);

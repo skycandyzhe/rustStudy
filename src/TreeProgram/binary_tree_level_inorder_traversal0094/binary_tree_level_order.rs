@@ -62,13 +62,15 @@ impl Solution {
             // index=index.left;
             //先将所有左节点加入队列
             while index.is_some(){
-                temp.push_back(*(index.as_ref().unwrap()));
-                index=&(index.as_ref().unwrap().borrow().left);
+                temp.push_back(index.as_ref().unwrap().clone());
+                index=&(index.as_ref().unwrap().clone().borrow().left);
+                // println!("{:?}",index);
             }
             if !temp.is_empty() {
                 node=temp.pop_back().unwrap();
                 ret.push(node.borrow().val);
-                index=&(node.borrow().right);  
+                 index=&node.borrow().right; 
+                println!("{:?}",index); 
             }
         }
         ret
