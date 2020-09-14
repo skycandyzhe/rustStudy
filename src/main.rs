@@ -21,8 +21,15 @@
 // // }
 fn main() {
 
-    for i in (0..5).reverse(){
-        println!("{:?}",i);
-    }
+    let  mut strtemp=String::from("Hello world");
+    // println!("{:?}",strtemp);
+    // let strstr=strtemp.as_mut_str();
+
+    
+    let strvec=unsafe{strtemp.as_mut_vec()};
+    println!("{:?} {:?}",strvec,strvec);
+    // for i in (0..5).reverse(){
+    //     println!("{:?}",i);
+    // }
     println!("Hello, world!");
 }
