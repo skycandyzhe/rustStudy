@@ -33,11 +33,6 @@ fn test1() {
     board.push(v1);
     let v1=vec!['.','.','.','.','8','.','.','7','9'];
     board.push(v1);
-    let v2=vec!['S','F','C','S'];
-    let v3=vec!['A','D','E','E'];
-    board.push(v1);
-    board.push(v2);
-    board.push(v3);
 
     let  w1= String::from("ABCCED");
     let ret=Solution::exist(board,w1);
