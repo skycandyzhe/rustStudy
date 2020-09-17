@@ -28,23 +28,23 @@ impl TreeNode {
 #[derive(Debug)]
 pub struct Solution {}
 impl Solution {
-
-    // pub fn inorder_traversal_deepth(rootnode: &Option<Rc<RefCell<TreeNode>>>,rettemp:& mut Vec<i32>){
-    //     if rootnode.is_none(){
-    //         return ;
-    //     }
-    //     let node=& rootnode.as_ref().unwrap().borrow();
+    //递归实现 比较简单
+    pub fn inorder_traversal_deepth(rootnode: &Option<Rc<RefCell<TreeNode>>>,rettemp:& mut Vec<i32>){
+        if rootnode.is_none(){
+            return ;
+        }
+        let node=& rootnode.as_ref().unwrap().borrow();
         
-    //    Solution::inorder_traversal_deepth(&node.left, rettemp);
-    //    rettemp.push(node.val);
-    //    Solution::inorder_traversal_deepth(&node.right, rettemp);
-    // }
-    // pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-    //     let mut  ret:Vec<i32> =Vec::new();
-    //     Solution::inorder_traversal_deepth(&root, &mut ret);
-    //     ret
+       Solution::inorder_traversal_deepth(&node.left, rettemp);
+       rettemp.push(node.val);
+       Solution::inorder_traversal_deepth(&node.right, rettemp);
+    }
+    pub fn inorder_traversal1(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut  ret:Vec<i32> =Vec::new();
+        Solution::inorder_traversal_deepth(&root, &mut ret);
+        ret
 
-    // }
+    }
 
     //尝试用迭代实现 左节点 根节点 右节点
     pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
@@ -53,24 +53,23 @@ impl Solution {
         if root.is_none(){
             return ret;
         }
-        let mut index=&root; //
-
+        let mut index=root.clone(); //clone 获取所有权
         let  mut temp:VecDeque<Rc<RefCell<TreeNode>>>=VecDeque::new();
         let  mut node:Rc<RefCell<TreeNode>> ;
         // temp.push_back(index.unwrap());
-        while temp.is_empty()||!index.is_none(){
+        while !temp.is_empty()||!index.is_none(){
             // index=index.left;
             //先将所有左节点加入队列
             while index.is_some(){
-                temp.push_back(index.as_ref().unwrap().clone());
-                index=&(index.as_ref().unwrap().clone().borrow().left);
                 // println!("{:?}",index);
+                temp.push_back(index.clone().unwrap());
+                index=index.unwrap().borrow().left.clone();
             }
             if !temp.is_empty() {
                 node=temp.pop_back().unwrap();
                 ret.push(node.borrow().val);
-                 index=&node.borrow().right; 
-                println!("{:?}",index); 
+                index=node.borrow().right.clone(); 
+                // println!("{:?}",index); 
             }
         }
         ret

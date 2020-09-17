@@ -30,7 +30,7 @@ fn test1() {
    root.right=Option::Some(Rc::new(RefCell::new(r1)));
 
     let ret=Solution::inorder_traversal(Option::Some(Rc::new(RefCell::new(root))));
-    println!(" {:#?} {:?} ",ret,ret);
+    println!("  {:?} ",ret);
     // [9, 15, 3, 20, 7] 
     // 输出: 1
 }
@@ -43,7 +43,7 @@ fn test2() {
     
     // println!("{:?}",root.unwrap().borrow().left);
     let ret=Solution::inorder_traversal(Option::Some(Rc::new(RefCell::new(root))));
-    println!(" {:#?} {:?} ",ret,ret);
+    println!("  {:?} ",ret);
     // 132
 }
 fn main() {
