@@ -1,5 +1,5 @@
-mod wordsearch;
-pub use wordsearch::Solution;
+mod sodusolver;
+pub use sodusolver::Solution;
 
 
 // 编写一个程序，通过已填充的空格来解决数独问题。
@@ -34,46 +34,45 @@ fn test1() {
     let v1=vec!['.','.','.','.','8','.','.','7','9'];
     board.push(v1);
 
-    let  w1= String::from("ABCCED");
-    let ret=Solution::exist(board,w1);
+    let ret=Solution::solve_sudoku(&mut board);
     println!("{:?}",ret);
 
 
 }
-fn test2() {
-    let mut board:Vec<Vec<char>>=Vec::new();
-    let v1=vec!['A','B','C','E'];
-    let v2=vec!['S','F','C','S'];
-    let v3=vec!['A','D','E','E'];
-    board.push(v1);
-    board.push(v2);
-    board.push(v3);
+// fn test2() {
+//     let mut board:Vec<Vec<char>>=Vec::new();
+//     let v1=vec!['A','B','C','E'];
+//     let v2=vec!['S','F','C','S'];
+//     let v3=vec!['A','D','E','E'];
+//     board.push(v1);
+//     board.push(v2);
+//     board.push(v3);
 
-    let w2= String::from("SEE");
+//     let w2= String::from("SEE");
 
-    let ret=Solution::exist(board,w2);
-    println!("{:?}",ret);
+//     let ret=Solution::exist(board,w2);
+//     println!("{:?}",ret);
 
-}
-fn test3() {
-    let mut board:Vec<Vec<char>>=Vec::new();
-    let v1=vec!['A','B','C','E'];
-    let v2=vec!['S','F','C','S'];
-    let v3=vec!['A','D','E','E'];
-    board.push(v1);
-    board.push(v2);
-    board.push(v3);
+// }
+// fn test3() {
+//     let mut board:Vec<Vec<char>>=Vec::new();
+//     let v1=vec!['A','B','C','E'];
+//     let v2=vec!['S','F','C','S'];
+//     let v3=vec!['A','D','E','E'];
+//     board.push(v1);
+//     board.push(v2);
+//     board.push(v3);
 
-    let w3= String::from("SEF");
-    let ret=Solution::exist(board,w3);
-    println!("{:?}",ret);
+//     let w3= String::from("SEF");
+//     let ret=Solution::exist(board,w3);
+//     println!("{:?}",ret);
 
-}
+// }
 
 
 fn main() {
     test1();
-    test2();
-    test3();
+    // test2();
+    // test3();
     // println!("Hello, world!");
 }

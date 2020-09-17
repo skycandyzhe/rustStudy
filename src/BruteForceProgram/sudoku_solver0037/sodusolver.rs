@@ -15,11 +15,6 @@ pub struct Solution {
 //     pub y:i32,
 // }
 // use std::collections::HashMap;
-impl Solution {
-    pub fn solve_sudoku(board: &mut Vec<Vec<char>>) {
-
-    }
-}
 
 impl Solution {
   
@@ -115,6 +110,45 @@ impl Solution {
         }
         false
         
+    }
+    pub fn setHasNode(row:usize,column:usize,value:u8,hasnode:&mut Vec<Vec<Vec<bool>>>)->bool{
+        let index3:usize =(row/3)*3+column/3;
+        println!("index {}",index3);
+        //只要已经有元素表示异常
+        if hasnode[0][row][value]==true||hasnode[1][column][value]==true ||hasnode[2][index3][value]==true{
+            return false;
+        }
+        hasnode[0][row][value]=true;
+        hasnode[1][column][value]=true;
+        hasnode[2][index3][value]=true;
+        return true;
+    }
+    pub fn solve_sudoku_depth(board: &mut Vec<Vec<char>>,hasnode:&mut Vec<Vec<Vec<bool>>>)
+    {
+        
+    }
+    pub fn solve_sudoku(board: &mut Vec<Vec<char>>) {
+        let mut hasnode:Vec<Vec<Vec<bool>>> = Vec::new();
+        let mut  t1:Vec<Vec<bool>>=Vec::new();
+        let mut t2:Vec<bool>=vec![false;9];
+        t1.resize(9, t2);
+        hasnode.resize(3,t1);
+        // println!("{:?}",hasnode);
+        //初始化
+        for _i in 0..9  {
+            for _j in 0..9 {
+                if board[_i][_j]!='.'{
+                    let value=(board[_i][_j] as u8)-('0' as u8);
+                    let ret=Solution::setHasNode(_i,_j,value,&mut hasnode);    
+                    println!("{}",value);
+                    if ret = false {
+                        panic!("error");
+                        
+                    }
+                }
+            }
+        }
+        Solution::solve_sudoku_depth(board ,&mut hasnode );
     }
    
 }
