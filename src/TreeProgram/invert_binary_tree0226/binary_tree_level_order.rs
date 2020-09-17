@@ -29,26 +29,19 @@ impl TreeNode {
 pub struct Solution {}
 impl Solution {
 
-    // pub fn inorder_traversal_deepth(rootnode: &Option<Rc<RefCell<TreeNode>>>,rettemp:& mut Vec<i32>){
-    //     if rootnode.is_none(){
-    //         return ;
-    //     }
-    //     let node=& rootnode.as_ref().unwrap().borrow();
-        
-    //    Solution::inorder_traversal_deepth(&node.left, rettemp);
-    //    rettemp.push(node.val);
-    //    Solution::inorder_traversal_deepth(&node.right, rettemp);
-    // }
-    // pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-    //     let mut  ret:Vec<i32> =Vec::new();
-    //     Solution::inorder_traversal_deepth(&root, &mut ret);
-    //     ret
-
-    // }
     pub fn invert_tree(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
-        let mut  ret:Vec<i32> =Vec::new();
-        Solution::inorder_traversal_deepth(&root, &mut ret);
-        ret
+        if root.is_none() {
+            return None;
+        }
+        if let Some(node)=root.clone(){
+            Solution::invert_tree(node.borrow().left.clone());
+            Solution::invert_tree(node.borrow().right.clone());
+            let left=node.borrow().left.clone();
+            let right=node.borrow().right.clone();
+            node.borrow_mut().left=right;
+            node.borrow_mut().right=left;
+        }
+        root
     }
     // //尝试用迭代实现 左节点 根节点 右节点
     // pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
