@@ -18,137 +18,73 @@ pub struct Solution {
 
 impl Solution {
   
-    //去获取边上节点的元素 是否和下一个元素相符合 ，如果下一个元素已经不在，返回true
-    pub fn exist_deepth(board: &Vec<Vec<char>>,word:&String,wordindex:usize,row:i32,column:i32,has_vis:&mut Vec<Vec<bool>>,maxrow:i32,maxcolumn:i32)->bool{
-        //语法不是很熟悉 获取到下一个元素 考虑有什么方法直接将chars传入 现在好像很耗时 
-        let needchars=word.chars().nth(wordindex);
-        let chardata=if let Some(data) = needchars {
-            data
-        }else{
-            return true;
-        };
-        let actions: [[i32; 2]; 4] = [[-1, 0], [1, 0], [0, 1], [0, -1]];
-        for item_action in actions.iter() {
-            let _rowindex: i32 = item_action[0] + row as i32;
-            let _columnindex: i32 = item_action[1] + column as i32;
-            if _rowindex <0||_columnindex<0 ||has_vis[_rowindex as usize][_columnindex as usize]==true{
-                continue;
-            }
-            let tempwordvec=board.get(_rowindex  as usize);
-            if tempwordvec.is_none(){
-                continue;
-            }
-            let tempwordvec=tempwordvec.unwrap();
-            let tempword=tempwordvec.get(_columnindex as usize);
-            if tempword.is_none(){
-                continue;
-            }
-            let tempword=tempword.unwrap();
-            if *tempword==chardata{
-                has_vis[_rowindex as usize][_columnindex as usize]=true;
-                if Solution::exist_deepth(
-                    board,
-                    word,
-                    wordindex+1,
-                    _rowindex  ,
-                    _columnindex  ,
-                    has_vis,
-                    maxrow,
-                    maxcolumn
-                )==true{
-                    return true;
-                }
-                has_vis[_rowindex as usize][_columnindex as usize]=false;
-            }
-
-           
-        }
-
-        false
-
-    }
-
-    pub fn exist(board: Vec<Vec<char>>, word: String) -> bool {
-        //获取行列
-        let datarow=board.len();
-        let mut datacolumn=0;
-        if datarow!= 0 {
-            datacolumn=board[0].len();
-        }
-        //快速二维数组初始化
-        let mut map: Vec<Vec<bool>> = Vec::new();
-        let mut vectemp:Vec<bool>=Vec::new();
-        vectemp.resize(datacolumn+1, false);
-        map.resize(datarow+1, vectemp);
-
-        // let mut wordchars=word.as_mut_str();
-        // let wordlen=word.len();
-        let wordindex:usize=0;
-        // print!("{:?}v{:?}",word.chars().nth(2),wordlen);
-        let needchars=word.chars().nth(0);
-        let chardata=if let Some(data) = needchars {
-            data
-        }else{
-            return true;
-        };
-
-        //遍历元素相同的 
-        for (i,v) in board.iter().enumerate(){
-            // println!("{} {:?}",i,v);
-            for (j,v2) in v.iter().enumerate() {
-                //判断值是否相同
-                if *v2==chardata{
-                    //递归遍历下一个节点
-                    map[i][j]=true;
-                    if Solution::exist_deepth(&board, &word,wordindex+1,i as i32,j as i32, &mut map, datarow as i32,datacolumn as i32)==true{
-                        return true;
-                    }
-                    map[i][j]=false;
-                }
-                
-            }
-        }
-        false
-        
-    }
-    pub fn setHasNode(row:usize,column:usize,value:u8,hasnode:&mut Vec<Vec<Vec<bool>>>)->bool{
+ 
+    pub fn set_has_node(row:usize,column:usize,value:u8,hasnode:&mut Vec<Vec<Vec<bool>>>)->bool{
         let index3:usize =(row/3)*3+column/3;
-        println!("index {}",index3);
+        // println!("index {}",index3);
         //只要已经有元素表示异常
-        if hasnode[0][row][value]==true||hasnode[1][column][value]==true ||hasnode[2][index3][value]==true{
+        if hasnode[0 ][row as usize][value as usize]==true||hasnode[1][column][value  as usize]==true ||hasnode[2][index3][value  as usize]==true{
             return false;
         }
-        hasnode[0][row][value]=true;
-        hasnode[1][column][value]=true;
-        hasnode[2][index3][value]=true;
+        hasnode[0][row][value as usize]=true;
+        hasnode[1][column][value as usize]=true;
+        hasnode[2][index3][value as usize]=true;
         return true;
     }
-    pub fn solve_sudoku_depth(board: &mut Vec<Vec<char>>,hasnode:&mut Vec<Vec<Vec<bool>>>)
+    pub fn un_set_has_node(row:usize,column:usize,value:u8,hasnode:&mut Vec<Vec<Vec<bool>>>)->bool{
+        let index3:usize =(row/3)*3+column/3;
+        hasnode[0][row][value as usize]=false;
+        hasnode[1][column][value as usize]=false;
+        hasnode[2][index3][value as usize]=false;
+        true
+    }
+    pub fn solve_sudoku_depth(board: &mut Vec<Vec<char>>,hasnode:&mut Vec<Vec<Vec<bool>>>)->bool
     {
-        
+        for _i in 0..9  {
+            for _j in 0..9 {
+                if board[_i][_j]=='.'{
+                    for value in 0..9 {
+                        //判断是否可以设置元素
+                        if Solution::set_has_node(_i,_j,value,hasnode) {
+                            //设置元素
+                            board[_i][_j]=(('1' as u8)+value)  as char;
+                            let ret=Solution::solve_sudoku_depth(board,hasnode);
+                            if ret == true {
+                                return true;
+                            }
+                            //退格 取消元素设置
+                            Solution::un_set_has_node(_i,_j,value,hasnode);
+                            board[_i][_j]='.';
+                        
+                        }
+                    }
+                    return false
+
+                }
+            }
+        }
+        return true;
     }
     pub fn solve_sudoku(board: &mut Vec<Vec<char>>) {
         let mut hasnode:Vec<Vec<Vec<bool>>> = Vec::new();
         let mut  t1:Vec<Vec<bool>>=Vec::new();
-        let mut t2:Vec<bool>=vec![false;9];
+        let t2:Vec<bool>=vec![false;9];
         t1.resize(9, t2);
         hasnode.resize(3,t1);
-        // println!("{:?}",hasnode);
         //初始化
         for _i in 0..9  {
             for _j in 0..9 {
                 if board[_i][_j]!='.'{
-                    let value=(board[_i][_j] as u8)-('0' as u8);
-                    let ret=Solution::setHasNode(_i,_j,value,&mut hasnode);    
-                    println!("{}",value);
-                    if ret = false {
+                    let value=(board[_i][_j] as u8)-('1' as u8);
+                    let ret=Solution::set_has_node(_i,_j,value,&mut hasnode);    
+                    if ret == false {
                         panic!("error");
                         
                     }
                 }
             }
         }
-        Solution::solve_sudoku_depth(board ,&mut hasnode );
+        let ret=Solution::solve_sudoku_depth(board ,&mut hasnode );
     }
    
 }

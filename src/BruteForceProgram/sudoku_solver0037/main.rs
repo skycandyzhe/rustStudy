@@ -35,7 +35,7 @@ fn test1() {
     board.push(v1);
 
     let ret=Solution::solve_sudoku(&mut board);
-    println!("{:?}",ret);
+    println!("{:#?}",board);
 
 
 }
