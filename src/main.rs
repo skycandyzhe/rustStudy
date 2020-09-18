@@ -34,5 +34,9 @@ fn main() {
     // for i in (0..5).reverse(){
     //     println!("{:?}",i);
     // }
+    let path=env!("PATH");
+    println!("{:?}",path);
+    let path=env!("LANG");
+    println!("{:?}",path);
     println!("Hello, world!");
 }
