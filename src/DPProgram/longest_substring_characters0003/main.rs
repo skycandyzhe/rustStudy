@@ -8,7 +8,7 @@ fn test1() {
     println!("{}", sol);
 }
 fn test2() {
-    let str1=String::from("bbbbddsfsdfdsfsdb");
+    let str1=String::from("a");
     let sol = Solution::length_of_longest_substring(str1);
     println!("{}", sol);
     // 输出: 1
