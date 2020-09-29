@@ -65,22 +65,5 @@ impl Solution {
         vals
 
     }  
-        pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-        
-            let mut vals = vec![];
-            let mut stack = std::collections::VecDeque::new();
-            let mut cur_node = root;
-            while cur_node.is_some() || !stack.is_empty() {
-                while let Some(node) = cur_node.clone() {
-                    stack.push_back(node.clone());
-                    let node = node.borrow();
-                    vals.push(node.val);
-                    cur_node = node.right.clone();
-                }
-                cur_node = stack.pop_back().unwrap().borrow().left.clone();
-            }
-            vals.reverse();
-            vals
-    
-        }
+
 }
