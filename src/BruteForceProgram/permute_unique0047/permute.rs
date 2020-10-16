@@ -26,6 +26,15 @@
 #[derive(Debug)]
 pub struct Solution {}
 impl Solution {
+    // pub fn sorted_squares(a: Vec<i32>) -> Vec<i32> {
+    //     let mut ret:Vec<i32>=Vec::new();
+    //     for i in a{
+    //         ret.push(i*i);
+    //     }
+    //     ret.sort();
+    //     ret
+    // }
+
     pub fn combination_recursion(candidates: Vec<i32> ) -> Vec<Vec<i32>> {
         let mut ret: Vec<Vec<i32>> = Vec::new();
         let veclen=candidates.len();
