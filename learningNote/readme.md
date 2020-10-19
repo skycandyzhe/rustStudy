@@ -89,3 +89,8 @@ RefCell  RefCell::new(data), 是另一种无需声明即可更改值的方法mut
     borrow()
 
 RC
+
+String  
+    遍历 
+      chars  遍历字符
+      char_indices (index ,char)
