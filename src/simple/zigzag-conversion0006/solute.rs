@@ -16,12 +16,7 @@ impl Solution {
         if num_rows<=1{
             return s;
         }
-        let mut ret:String=String::new();
-        let mut rowVec:Vec<String> =Vec::new();
-        for i in 0..num_rows {
-            let temp:String= String::new();
-            rowVec.push(temp);
-        }
+        let mut origin_vec:Vec<Vec<u8>> = vec![vec![]; num_rows as usize];
         let rowcount=num_rows*2-2;
         for (i,data)  in s.char_indices() {
             // println!("{} {:?}",i,data);
@@ -29,32 +24,10 @@ impl Solution {
             if index>=num_rows{
                 index=rowcount-index ;
             }
-            rowVec[index as usize].push(data)
+            origin_vec[index as usize].push(data as u8);
         }
-        for i in rowVec{
-            ret.push_str(&i);
-        }
-        ret
-    }
-    pub fn backspace_compare(s: String, t: String) -> bool {
-        let mut rs=String::new();
-        let mut rt=String::new();
-        for i in s.chars() {
-            if i=='#'{
-                rs.pop();
-            }else{
-                rs.push(i);
-            }
-        }
-        for j in t.chars() {
-            if j=='#'{
-                rt.pop();
-            }else{
-                rt.push(j);
-            }
-        }
-        // println!("{:?} {:?}",rs,rt);
-        return rs==rt;
+        let one_vec= origin_vec.concat();
+        String::from_utf8(one_vec).unwrap()
     }
 
 }
